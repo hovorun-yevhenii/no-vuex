@@ -1,10 +1,14 @@
 <template>
-  <div>
+  <div class="episodes">
     <div class="title">{{ heading }}</div>
 
-    <div v-for="episode in episodes" :key="episode.episode" class="info">
+    <div v-for="episode in episodes"
+         :key="episode.episode"
+         class="info">
+
       <div class="info__key">{{ episode.episode }}</div>
       <div class="info__value">{{ episode.name }}</div>
+
     </div>
   </div>
 </template>
@@ -22,3 +26,10 @@
     }
   }
 </script>
+
+<style lang="scss" scoped>
+  .episodes {
+    max-height: 320px;
+    overflow-y: auto;
+  }
+</style>

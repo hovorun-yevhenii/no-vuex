@@ -1,6 +1,6 @@
 <template>
   <div class="image">
-    <img :src="imageSrc" alt="">
+    <img :src="imageSrc"  alt="hero image"/>
   </div>
 </template>
 
@@ -18,12 +18,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 280px;
 
     img {
       max-width: 100%;
       max-height: 100%;
-      margin-bottom: 16px;
       border: 1px solid #bbb;
       border-radius: 8px;
     }

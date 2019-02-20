@@ -1,5 +1,9 @@
 <template>
-  <div @click="clickHandler" class="btn" :class="{'disabled': disabled}">Another hero</div>
+  <div @click="clickHandler"
+       class="btn"
+       :class="{'disabled': disabled}">
+    Another hero
+  </div>
 </template>
 
 <script>
@@ -29,10 +33,11 @@
     text-transform: uppercase;
     font-weight: bold;
     cursor: pointer;
-    transition: .2s;
-    
+
     &.disabled {
-      color: #777;
+      color: transparent;
+      background: #bbb url(http://carparts-4u.com.ua/img/253.gif) center/12% no-repeat;
+      filter: saturate(0);
     }
 
     &:hover {

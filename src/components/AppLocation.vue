@@ -2,9 +2,13 @@
   <div>
     <div class="title">Location</div>
 
-    <div v-for="(value, key) in location" :key="key" class="info">
+    <div v-for="(value, key) in location"
+         :key="key"
+         class="info">
+
       <div class="info__key">{{ key }}</div>
       <div class="info__value">{{ value }}</div>
+
     </div>
   </div>
 </template>

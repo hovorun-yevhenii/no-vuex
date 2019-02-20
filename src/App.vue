@@ -1,15 +1,33 @@
 <template>
   <div id="app">
-    <app-button @click="getData" :disabled="isLoading"></app-button>
+    <app-button @click="getData"
+                :disabled="isLoading">
+    </app-button>
 
     <div class="cards">
-      <app-hero :hero="hero" :imageSrc="imageSrc" class="card"></app-hero>
+
+      <app-hero :hero="hero"
+                :imageSrc="imageSrc"
+                @click.native="openModal"
+                class="card">
+      </app-hero>
+
       <div class="details">
-        <app-location :location="location" class="card"></app-location>
-        <app-episodes :episodes="episodes" class="card"></app-episodes>
+        <app-location :location="location"
+                      class="card">
+        </app-location>
+
+        <app-episodes :episodes="episodes"
+                      class="card">
+        </app-episodes>
       </div>
     </div>
 
+    <app-modal v-if="showModal && hero"
+               :imageSrc="imageSrc"
+               :heroName="hero.name"
+               @closeModal="closeModal">
+    </app-modal>
   </div>
 </template>
 
@@ -18,6 +36,7 @@
   import AppLocation from './components/AppLocation'
   import AppEpisodes from './components/AppEpisodes'
   import AppButton from './components/AppButton'
+  import AppModal from './components/AppModal'
 
   export default {
     name: 'app',
@@ -25,7 +44,8 @@
       AppHero,
       AppLocation,
       AppEpisodes,
-      AppButton
+      AppButton,
+      AppModal
     },
     data() {
       return {
@@ -35,6 +55,7 @@
         episodes: null,
         locationUrl: '',
         episodesUrl: '',
+        showModal: false,
         isLoading: false
       }
     },
@@ -96,6 +117,12 @@
             }
           })
         });
+      },
+      openModal() {
+        this.showModal = true;
+      },
+      closeModal() {
+        this.showModal = false;
       }
     }
   }
@@ -112,7 +139,7 @@
     min-height: 100vh;
     padding: 24px 0;
     box-sizing: border-box;
-    background: #999 url(https://www.transparenttextures.com/patterns/wavecut.png);
+    background: #999 url(https://www.transparenttextures.com/patterns/translucent-fibres.png);
 
     * {
       font-family: Helvetica, sans-serif;
