@@ -16,10 +16,10 @@
 <script>
   export default {
     name: 'AppEpisodes',
-    props: {
-      episodes: Array
-    },
     computed: {
+      episodes() {
+        return this.$store.getters.getEpisodes
+      },
       heading() {
         return `Episode${this.episodes && this.episodes.length > 1 ? "s" : ""}`;
       }

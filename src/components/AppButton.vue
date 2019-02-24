@@ -9,12 +9,14 @@
 <script>
   export default {
     name: 'AppButton',
-    props: {
-      disabled: Boolean
+    computed: {
+      disabled () {
+        return this.$store.getters.getIsLoading
+      }
     },
     methods: {
       clickHandler() {
-        if (!this.disabled) this.$emit('click');
+        if (!this.disabled) this.$store.dispatch('getData', this.$baseUrl);
       }
     }
   }

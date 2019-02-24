@@ -16,8 +16,10 @@
 <script>
   export default {
     name: 'AppLocation',
-    props: {
-      location: Object
+    computed: {
+      location() {
+        return this.$store.getters.getLocation
+      }
     }
   }
 </script>

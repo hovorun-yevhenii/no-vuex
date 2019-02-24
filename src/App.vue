@@ -1,33 +1,14 @@
 <template>
   <div id="app">
-    <app-button @click="getData"
-                :disabled="isLoading">
-    </app-button>
-
+    <app-button></app-button>
     <div class="cards">
-
-      <app-hero :hero="hero"
-                :imageSrc="imageSrc"
-                @click.native="openModal"
-                class="card">
-      </app-hero>
-
+      <app-hero @click.native="openModal" class="card"></app-hero>
       <div class="details">
-        <app-location :location="location"
-                      class="card">
-        </app-location>
-
-        <app-episodes :episodes="episodes"
-                      class="card">
-        </app-episodes>
+        <app-location class="card"></app-location>
+        <app-episodes class="card"></app-episodes>
       </div>
     </div>
-
-    <app-modal v-if="showModal && hero"
-               :imageSrc="imageSrc"
-               :heroName="hero.name"
-               @closeModal="closeModal">
-    </app-modal>
+    <app-modal></app-modal>
   </div>
 </template>
 
@@ -47,82 +28,12 @@
       AppButton,
       AppModal
     },
-    data() {
-      return {
-        hero: null,
-        imageSrc: '',
-        location: null,
-        episodes: null,
-        locationUrl: '',
-        episodesUrl: '',
-        showModal: false,
-        isLoading: false
-      }
-    },
     created() {
-      this.getData()
+      this.$store.dispatch('getData', this.$baseUrl)
     },
     methods: {
-      getData() {
-        this.isLoading = true;
-
-        this.getHero().then(() => {
-            this.getLocation(this.locationUrl).then(() => {
-              this.isLoading = false;
-            });
-            this.getEpisodes(this.episodesUrl).then(() => {
-              this.isLoading = false;
-            });
-          }
-        )
-      },
-      getHero() {
-        return fetch(`${this.$baseUrl}character/${Math.ceil(Math.random() * 492)}`)
-          .then(res => res.json())
-          .then(hero => {
-            this.imageSrc = hero.image;
-            this.locationUrl = hero.location.url;
-            this.episodesUrl = hero.episode;
-
-            this.hero = {
-              name: hero.name,
-              species: hero.species,
-              gender: hero.gender,
-              status: hero.status,
-              type: hero.type
-            };
-          });
-      },
-      getLocation(url) {
-        return fetch(url)
-          .then(res => res.json())
-          .then(location => {
-            this.location = {
-              name: location.name,
-              type: location.type,
-              dimension: location.dimension,
-              population: location.residents.length
-            }
-          });
-      },
-      getEpisodes(urls) {
-        const request = url => fetch(url).then(res => res.json()).then(res => res);
-        const allRequests = Promise.all(urls.map(url => request(url)));
-
-        return allRequests.then(episodes => {
-          this.episodes = episodes.map(episode => {
-            return {
-              episode: episode.episode,
-              name: episode.name
-            }
-          })
-        });
-      },
       openModal() {
-        this.showModal = true;
-      },
-      closeModal() {
-        this.showModal = false;
+        this.$store.commit('TOGGLE_MODAL', true)
       }
     }
   }

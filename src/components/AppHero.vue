@@ -19,20 +19,19 @@
 
 <script>
   import AppImage from './AppImage'
+  import { mapGetters } from 'vuex'
 
   export default {
     name: 'AppHero',
     components: {
       AppImage
     },
-    props: {
-      hero: Object,
-      imageSrc: String
-    },
-    data() {
-      return {}
-    },
-    methods: {}
+    computed: {
+      ...mapGetters({
+        hero: 'getHero',
+        imageSrc: 'getImageSrc'
+      })
+    }
   }
 </script>
 

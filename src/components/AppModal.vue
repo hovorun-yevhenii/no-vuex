@@ -1,5 +1,5 @@
 <template>
-  <div class="modal">
+  <div class="modal" v-if="showModal">
     <div class="modal__body">
 
       <div @click="closeModal" class="modal__close">+</div>
@@ -16,16 +16,23 @@
   import AppImage from './AppImage'
   export default {
     name: 'AppModal',
-    props: {
-      imageSrc: String,
-      heroName: String
+    computed: {
+      imageSrc(){
+        return this.$store.getters.getImageSrc
+      },
+      showModal() {
+        return this.$store.getters.getShowModal
+      },
+      heroName() {
+        return this.$store.getters.getHeroName
+      }
     },
     components: {
       AppImage
     },
     methods: {
       closeModal() {
-        this.$emit('closeModal');
+        this.$store.commit('TOGGLE_MODAL', false);
       }
     }
   }
