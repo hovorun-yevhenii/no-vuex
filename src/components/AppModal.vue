@@ -39,7 +39,7 @@
     right: 0;
     left: 0;
     display: flex;
-    background-color: rgba(100,100,100,.7);
+    background-color: rgba(10,10,10,.9);
     overflow-y: auto;
 
     &__close {
@@ -51,8 +51,9 @@
       justify-content: center;
       width: 36px;
       height: 36px;
+      border: 1px solid #ddd;
       border-radius: 50%;
-      color: #eee;
+      color: #ddd;
       font-size: 28px;
       font-weight: bold;
       background-color: #222;
@@ -65,7 +66,6 @@
       margin: auto;
       padding: 16px;
       border: 1px solid #bbb;
-      border-radius: 8px;
       background-color: #ddd;
 
       .name {

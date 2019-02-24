@@ -40,5 +40,6 @@
   .image {
     width: 120px;
     margin: 0 auto 16px;
+    cursor: pointer;
   }
 </style>

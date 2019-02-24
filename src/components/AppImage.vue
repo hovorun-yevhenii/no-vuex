@@ -23,7 +23,6 @@
       max-width: 100%;
       max-height: 100%;
       border: 1px solid #bbb;
-      border-radius: 8px;
     }
   }
 </style>

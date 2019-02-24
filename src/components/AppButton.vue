@@ -23,12 +23,12 @@
 <style lang="scss" scoped>
   .btn {
     width: 180px;
-    padding: 8px;
+    padding: 16px;
     margin: 0 auto;
-    border: 1px solid #999;
-    border-radius: 8px;
-    background-color: #bbb;
+    border: 2px solid #999;
     box-shadow: 0 2px 3px rgba(0, 0, 0, .2);
+    color: #ddd;
+    background-color: #222;
     text-align: center;
     text-transform: uppercase;
     font-weight: bold;
@@ -36,12 +36,12 @@
 
     &.disabled {
       color: transparent;
-      background: #bbb url(http://carparts-4u.com.ua/img/253.gif) center/12% no-repeat;
+      background: #222 url(http://carparts-4u.com.ua/img/253.gif) center/12% no-repeat;
       filter: saturate(0);
     }
 
     &:hover {
-      background-color: #ccc;
+      text-decoration: underline;
     }
   }
 </style>

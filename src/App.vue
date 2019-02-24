@@ -137,13 +137,13 @@
 
   [id="app"] {
     min-height: 100vh;
-    padding: 24px 0;
+    padding: 16px 0;
     box-sizing: border-box;
-    background: #999 url(https://www.transparenttextures.com/patterns/translucent-fibres.png);
+    background: #222;
 
     * {
       font-family: Helvetica, sans-serif;
-      color: #2c3e50;
+      color: #222;
     }
 
     .cards {
@@ -156,19 +156,21 @@
     .card {
       width: 296px;
       min-width: 296px;
-      margin: 16px;
+      margin: 16px 8px;
       padding: 16px;
-      border: 1px solid #bbb;
-      border-radius: 8px;
+      border: 2px solid #ddd;
       background-color: #ddd;
       box-shadow: 0 2px 3px rgba(0, 0, 0, .2);
       box-sizing: border-box;
 
       .title {
-        padding: 0 8px 16px;
+        padding: 8px 0;
+        margin: -16px -16px 16px;
         text-align: center;
         font-size: 24px;
         font-weight: bold;
+        color: #ddd;
+        background-color: #222;
       }
     }
 
@@ -184,13 +186,13 @@
       &__key,
       &__value {
         flex-basis: 60%;
-        padding: 4px;
+        padding: 8px 4px;
         box-sizing: border-box;
       }
 
       &__key {
         flex-basis: 40%;
-        color: #777;
+        color: #555;
       }
     }
   }
